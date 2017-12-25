@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.musicplayer"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="18"
+        android:targetSdkVersion="18" />
+<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/icon1"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <service android:name="com.example.musicplayer.sensorService"></service>
+        <service android:name="com.example.musicplayer.BackgroundMusicService"></service>
+        <service android:name="com.example.musicplayer.notificationService"></service>
+        <activity
+            android:name="com.example.musicplayer.MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <receiver android:name="com.example.musicplayer.musicPlayerReceiver">
+             <intent-filter >
+                <action android:name="playMusic"/>
+            </intent-filter>
+            <intent-filter >
+                <action android:name="nextMusic"/>
+            </intent-filter>
+            <intent-filter >
+                <action android:name="prevMusic"/>
+            </intent-filter>
+            <intent-filter >
+                <action android:name="pauseMusic"/>
+            </intent-filter>
+            <intent-filter >
+                <action android:name="stopMusic"/>
+            </intent-filter>
+            <intent-filter >
+                <action android:name="playMusicFromList"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.example.musicplayer.notificationReceiver">
+            <intent-filter >
+                <action android:name="playMusic"/>
+            </intent-filter>
+            <intent-filter >
+                <action android:name="nextMusic"/>
+            </intent-filter>
+            <intent-filter >
+                <action android:name="prevMusic"/>
+            </intent-filter>
+             <intent-filter >
+                <action android:name="pauseMusic"/>
+            </intent-filter>
+            <intent-filter >
+                <action android:name="stopMusic"/>
+            </intent-filter>
+            <intent-filter >
+                <action android:name="playMusicFromList"/>
+            </intent-filter>
+        </receiver>
+ <!--        <receiver android:name="com.example.musicplayer.sensorReceiver">
+            <intent-filter >
+                <action android:name="startSensor"/>
+            </intent-filter>
+             <intent-filter >
+                <action android:name="stopSensor"/>
+            </intent-filter>
+        </receiver>--> 
+    </application>
+
+</manifest>
